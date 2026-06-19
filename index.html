@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chakit Arora, PhD — Computational Biologist</title>
+<meta name="description" content="Chakit Arora, PhD — Post-Doctoral Research Fellow in Computational Biology at Scuola Normale Superiore, Pisa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:       #080D18;
+  --void2:      #0D1525;
+  --void3:      #111C30;
+  --surface:    #111E34;
+  --surface2:   #172440;
+  --teal:       #00C9A7;
+  --teal-dim:   #009E84;
+  --teal-ghost: rgba(0,201,167,0.07);
+  --gold:       #E8A020;
+  --gold-dim:   #A87018;
+  --gold-ghost: rgba(232,160,32,0.07);
+  --purple:     #8B6FC0;
+  --purple-dim: #5A3F8E;
+  --phosphor:   #E8F0FA;
+  --phosphor2:  #B0C8E0;
+  --phosphor3:  #6E90B0;
+  --line:       rgba(216,228,240,0.08);
+  --line2:      rgba(216,228,240,0.04);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+  --max: 900px;
+  --r: 4px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-sans);
+  background:var(--void);
+  color:var(--phosphor);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:var(--teal);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--gold);text-decoration:none}
+::selection{background:rgba(0,201,167,0.25);color:var(--phosphor)}
+
+/* ── INDRA'S NET BACKGROUND ──────────────────────────────────── */
+#indra-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:0.35;
+}
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,13,24,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;
+}
+.nav-name{
+  font-family:var(--font-mono);
+  font-size:0.78rem;
+  color:var(--teal);
+  letter-spacing:0.04em;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.nav-name::before{
+  content:'>';
+  color:var(--gold);
+  animation:blink 1.2s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.nav-links{display:flex;gap:1.8rem}
+.nav-links a{
+  font-family:var(--font-mono);
+  font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--phosphor3);
+}
+.nav-links a:hover{color:var(--teal)}
+
+/* ── LAYOUT ──────────────────────────────────────────────────── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+section{padding:4rem 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero{
+  padding:5.5rem 0 4rem;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:start}
+.hero-eyebrow{
+  font-family:var(--font-mono);
+  font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--teal-dim);margin-bottom:1.2rem;
+}
+.hero-name{
+  font-family:var(--font-serif);
+  font-size:clamp(3rem,7vw,5rem);
+  font-weight:300;
+  line-height:1.0;
+  color:var(--phosphor);
+  margin-bottom:0.2rem;
+  letter-spacing:0.01em;
+}
+.hero-name em{
+  font-style:italic;
+  color:var(--teal);
+  font-weight:300;
+}
+.hero-phd{
+  font-family:var(--font-serif);
+  font-size:1.15rem;
+  font-weight:300;
+  font-style:italic;
+  color:var(--gold);
+  letter-spacing:0.08em;
+  margin-bottom:1.8rem;
+}
+.hero-positions{margin-bottom:1.8rem;display:flex;flex-direction:column;gap:0.6rem}
+.pos-block{display:flex;flex-direction:column;gap:0.06rem}
+.pos-role{font-size:0.88rem;font-weight:400;color:var(--phosphor)}
+.pos-place{font-size:0.78rem;color:var(--phosphor3)}
+.pos-place a{color:var(--teal-dim)}
+.pos-place a:hover{color:var(--teal)}
+.pos-divider{height:1px;background:var(--line);margin:0.25rem 0}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.8rem}
+.tag{
+  font-family:var(--font-mono);
+  font-size:0.62rem;font-weight:400;
+  padding:0.22rem 0.7rem;
+  border-radius:2px;
+  border:1px solid var(--line);
+  color:var(--phosphor3);
+  background:transparent;
+  letter-spacing:0.04em;
+}
+.tag.t{border-color:var(--teal-dim);color:var(--teal)}
+.hero-links{display:flex;flex-wrap:wrap;gap:0.5rem}
+.btn{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  font-family:var(--font-mono);
+  font-size:0.68rem;letter-spacing:0.05em;
+  padding:0.4rem 0.9rem;
+  border-radius:2px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--phosphor2);
+  transition:all 0.15s;text-decoration:none;
+}
+.btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-ghost)}
+.btn-primary{border-color:var(--teal-dim);color:var(--teal);background:var(--teal-ghost)}
+.btn-primary:hover{background:rgba(0,201,167,0.14);border-color:var(--teal)}
+.hero-photo{
+  width:140px;height:140px;
+  border-radius:2px;
+  overflow:hidden;
+  border:1px solid var(--teal-dim);
+  flex-shrink:0;
+  background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);
+  font-size:2.5rem;font-style:italic;
+  color:var(--teal);
+  position:relative;
+}
+.hero-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,201,167,0.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(0.85) contrast(1.05)}
+
+/* ── SECTION LABEL ───────────────────────────────────────────── */
+.section-label{
+  font-family:var(--font-mono);
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal-dim);
+  margin-bottom:1.6rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.section-label::before{content:'//';color:var(--gold-dim);font-size:0.7rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* ── METRICS ─────────────────────────────────────────────────── */
+.metrics{padding:1.6rem 0;border-bottom:1px solid var(--line)}
+.metrics-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+}
+.metric{
+  background:var(--surface);
+  padding:1.1rem 0.9rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.metric::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:transparent;transition:background 0.3s;
+}
+.metric:hover::before{background:var(--teal)}
+.metric-number{
+  font-family:var(--font-mono);
+  font-size:1.7rem;font-weight:500;
+  color:var(--phosphor);
+  line-height:1;margin-bottom:0.3rem;
+  letter-spacing:-0.02em;
+}
+.metric-number.live{color:var(--teal)}
+.metric-label{
+  font-family:var(--font-mono);
+  font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--phosphor3);
+}
+.metric-sub{
+  font-family:var(--font-mono);
+  font-size:0.56rem;color:var(--teal-dim);margin-top:0.12rem;
+}
+.live-dot{
+  display:inline-block;width:4px;height:4px;
+  border-radius:50%;background:var(--teal);
+  margin-right:0.25rem;animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+
+/* ── ABOUT ───────────────────────────────────────────────────── */
+.about-body{font-size:0.95rem;color:var(--phosphor2);max-width:700px;line-height:1.8}
+.about-body p{margin-bottom:1rem}
+.about-body p:last-child{margin-bottom:0}
+.about-body strong{color:var(--phosphor);font-weight:500}
+
+/* ── PUBLICATIONS ────────────────────────────────────────────── */
+.pub-filters{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.4rem;align-items:center}
+.filter-btn{
+  font-family:var(--font-mono);
+  font-size:0.65rem;letter-spacing:0.06em;
+  padding:0.28rem 0.8rem;border-radius:2px;
+  border:1px solid var(--line);background:transparent;
+  color:var(--phosphor3);cursor:pointer;transition:all 0.12s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--teal-ghost);color:var(--teal);border-color:var(--teal-dim);
+}
+.pub-status{font-family:var(--font-mono);font-size:0.62rem;color:var(--phosphor3);margin-left:auto;font-style:normal}
+.pub-list{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--line2);
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+}
+.pub-item{
+  background:var(--surface);
+  padding:1rem 1.2rem;
+  display:grid;grid-template-columns:24px 1fr auto;
+  gap:0 0.9rem;align-items:start;
+  transition:background 0.12s;
+}
+.pub-item:hover{background:var(--surface2)}
+.pub-num{
+  font-family:var(--font-mono);
+  font-size:0.65rem;color:var(--phosphor3);
+  padding-top:0.2rem;text-align:right;
+}
+.pub-num.star{color:var(--gold);font-size:0.8rem}
+.pub-title{
+  font-family:var(--font-serif);
+  font-size:0.98rem;font-weight:400;
+  color:var(--phosphor);line-height:1.4;margin-bottom:0.3rem;
+}
+.pub-title a{color:inherit}
+.pub-title a:hover{color:var(--teal)}
+.pub-meta{
+  font-family:var(--font-mono);
+  font-size:0.64rem;color:var(--phosphor3);
+  display:flex;flex-wrap:wrap;gap:0.2rem 0.6rem;align-items:center;
+}
+.pub-journal{color:var(--teal-dim)}
+.badge{
+  font-family:var(--font-mono);
+  font-size:0.58rem;font-weight:500;
+  padding:0.06rem 0.4rem;border-radius:2px;
+}
+.badge-if{background:rgba(0,201,167,0.1);color:var(--teal);border:1px solid var(--teal-dim)}
+.badge-fa{background:rgba(232,160,32,0.1);color:var(--gold);border:1px solid var(--gold-dim)}
+.badge-pre{background:rgba(107,79,160,0.15);color:var(--purple);border:1px solid var(--purple-dim)}
+.pub-cite{
+  font-family:var(--font-mono);
+  font-size:0.64rem;color:var(--phosphor3);
+  text-align:right;white-space:nowrap;padding-top:0.2rem;min-width:52px;
+}
+.pub-cite strong{display:block;font-size:1rem;font-weight:500;color:var(--teal);line-height:1}
+.pub-cite span{color:var(--phosphor3);font-size:0.58rem}
+.pub-loading{
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem;color:var(--phosphor3);
+  font-family:var(--font-mono);font-size:0.75rem;gap:0.5rem;
+}
+.api-banner{
+  font-family:var(--font-mono);font-size:0.68rem;
+  padding:0.55rem 1rem;
+  background:var(--teal-ghost);
+  border:1px solid var(--teal-dim);
+  border-radius:2px;color:var(--teal);
+  margin-bottom:1rem;display:none;
+}
+
+/* ── SOFTWARE ────────────────────────────────────────────────── */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.sw-card{
+  background:var(--surface);
+  padding:1.3rem;
+  transition:background 0.12s;
+}
+.sw-card:hover{background:var(--surface2)}
+.sw-name{
+  font-family:var(--font-mono);
+  font-weight:500;font-size:0.85rem;
+  color:var(--teal);margin-bottom:0.2rem;
+}
+.sw-badge{
+  font-family:var(--font-mono);
+  font-size:0.58rem;font-weight:400;
+  padding:0.08rem 0.4rem;border-radius:2px;
+  background:rgba(0,201,167,0.08);
+  color:var(--teal-dim);
+  display:inline-block;margin-bottom:0.6rem;
+  border:1px solid rgba(0,201,167,0.15);
+}
+.sw-desc{font-size:0.8rem;color:var(--phosphor3);line-height:1.55;margin-bottom:0.75rem}
+.sw-link{font-family:var(--font-mono);font-size:0.7rem;color:var(--teal-dim)}
+.sw-link:hover{color:var(--teal)}
+.sw-link::after{content:'  ↗';font-size:0.65rem}
+
+/* ── TIMELINE ────────────────────────────────────────────────── */
+.timeline{display:flex;flex-direction:column}
+.tl-item{
+  display:grid;grid-template-columns:100px 1fr;
+  gap:0 1.5rem;padding:1.4rem 0;
+  border-bottom:1px solid var(--line);
+}
+.tl-item:first-child{padding-top:0}
+.tl-item:last-child{border-bottom:none;padding-bottom:0}
+.tl-date{
+  font-family:var(--font-mono);
+  font-size:0.65rem;color:var(--teal-dim);
+  padding-top:0.18rem;text-align:right;line-height:1.5;
+}
+.tl-title{font-family:var(--font-serif);font-size:1rem;font-weight:400;color:var(--phosphor);margin-bottom:0.1rem}
+.tl-org{font-family:var(--font-mono);font-size:0.72rem;color:var(--teal-dim);margin-bottom:0.35rem}
+.tl-org a{color:var(--teal-dim)}
+.tl-org a:hover{color:var(--teal)}
+.tl-desc{font-size:0.8rem;color:var(--phosphor3);line-height:1.6}
+.tl-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
+.tl-tag{
+  font-family:var(--font-mono);
+  font-size:0.6rem;padding:0.12rem 0.45rem;
+  border-radius:2px;border:1px solid var(--line);
+  color:var(--phosphor3);
+}
+
+/* ── CONTACT ─────────────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.contact-card{background:var(--surface);padding:1.1rem;display:flex;align-items:flex-start;gap:0.7rem;transition:background 0.12s}
+.contact-card:hover{background:var(--surface2)}
+.contact-icon{
+  font-family:var(--font-mono);
+  font-size:0.65rem;color:var(--teal-dim);
+  padding-top:0.1rem;letter-spacing:0.05em;
+  white-space:nowrap;
+}
+.contact-label{font-family:var(--font-mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--phosphor3);margin-bottom:0.2rem}
+.contact-value{font-size:0.8rem;color:var(--phosphor2)}
+.contact-value a{color:var(--teal-dim)}
+.contact-value a:hover{color:var(--teal)}
+
+/* ── DESIGN PHILOSOPHY ───────────────────────────────────────── */
+.philosophy{background:var(--void2)}
+.phil-intro{
+  font-family:var(--font-serif);
+  font-size:1.35rem;font-weight:300;font-style:italic;
+  color:var(--phosphor2);
+  max-width:680px;line-height:1.7;
+  margin-bottom:2.5rem;
+  border-left:1px solid var(--teal-dim);
+  padding-left:1.5rem;
+}
+.phil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.phil-block{}
+.phil-glyph{
+  font-family:var(--font-mono);
+  font-size:0.62rem;letter-spacing:0.15em;
+  color:var(--gold-dim);margin-bottom:0.5rem;
+  text-transform:uppercase;
+}
+.phil-heading{
+  font-family:var(--font-serif);
+  font-size:1.2rem;font-weight:400;
+  color:var(--gold);margin-bottom:0.6rem;
+}
+.phil-body{
+  font-size:0.85rem;color:var(--phosphor3);
+  line-height:1.8;
+}
+.phil-body em{color:var(--phosphor2);font-style:italic}
+.phil-body strong{color:var(--phosphor);font-weight:500}
+.phil-divider{
+  height:1px;background:var(--line);
+  margin:2.5rem 0;
+  position:relative;
+}
+.phil-divider::after{
+  content:'◆';
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:var(--void2);
+  padding:0 0.8rem;
+  font-size:0.5rem;color:var(--gold-dim);
+}
+.phil-coda{
+  font-family:var(--font-serif);
+  font-size:1.05rem;font-weight:300;font-style:italic;
+  color:var(--phosphor3);
+  max-width:640px;
+  line-height:1.85;
+  border-left:1px solid var(--gold-dim);
+  padding-left:1.5rem;
+  margin-top:2.5rem;
+}
+.phil-coda strong{color:var(--gold);font-weight:400}
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer{
+  padding:2rem 0;
+  text-align:center;
+  border-top:1px solid var(--line);
+}
+.footer-text{
+  font-family:var(--font-mono);
+  font-size:0.65rem;color:var(--phosphor3);margin-bottom:0.4rem;
+  letter-spacing:0.04em;
+}
+.footer-coords{
+  font-family:var(--font-mono);
+  font-size:0.6rem;color:var(--teal-dim);
+  letter-spacing:0.06em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media(max-width:620px){
+  .hero-grid{grid-template-columns:1fr;gap:1.8rem}
+  .hero-photo{width:100px;height:100px;font-size:2rem;margin:0 auto}
+  .hero-photo-wrap{order:-1;display:flex;justify-content:center}
+  .tl-item{grid-template-columns:70px 1fr;gap:0 1rem}
+  .pub-item{grid-template-columns:20px 1fr}
+  .pub-cite{display:none}
+  .nav-links{gap:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- INDRA'S NET — the background lattice. A network that is simultaneously
+     a protein interaction graph, a spacetime lattice, and the jewelled net
+     of Indra where every node reflects every other node. -->
+<canvas id="indra-canvas" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">chakit_arora</span>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#publications">papers</a>
+      <a href="#software">software</a>
+      <a href="#cv">cv</a>
+      <a href="#philosophy">design</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">// computational biology · cancer genomics · GPCR signalling</p>
+        <h1 class="hero-name">Chakit<br><em>Arora</em></h1>
+        <p class="hero-phd">PhD</p>
+
+        <div class="hero-positions">
+          <div class="pos-block">
+            <span class="pos-role">Post-Doctoral Research Fellow</span>
+            <span class="pos-place">
+              <a href="https://bioinfolab.sns.it" target="_blank" rel="noopener">Bioinformatics Group (BIO@SNS)</a>,
+              <a href="https://www.sns.it" target="_blank" rel="noopener">Scuola Normale Superiore</a>, Pisa, Italy
+            </span>
+          </div>
+          <div class="pos-divider"></div>
+          <div class="pos-block">
+            <span class="pos-role">PhD in Computational Biology</span>
+            <span class="pos-place">
+              <a href="https://webs.iiitd.edu.in/raghava/" target="_blank" rel="noopener">Prof. G.P.S. Raghava's Lab</a>,
+              <a href="https://www.iiitd.ac.in" target="_blank" rel="noopener">IIIT-Delhi</a>, India
+            </span>
+          </div>
+          <div class="pos-block" style="margin-top:0.05rem">
+            <span class="pos-place" style="font-size:0.73rem;color:var(--phosphor3)">
+              MSc Physics · BSc (Hons) Electronics — University of Delhi, India
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-tags">
+          <span class="tag t">cancer genomics</span>
+          <span class="tag t">GPCR signalling</span>
+          <span class="tag t">multi-omics</span>
+          <span class="tag">ML drug response</span>
+          <span class="tag">survival analysis</span>
+          <span class="tag">alternative splicing</span>
+          <span class="tag">bioinformatics</span>
+        </div>
+
+        <div class="hero-links">
+          <a href="https://scholar.google.com/citations?user=IUeqxQsAAAAJ" class="btn btn-primary" target="_blank" rel="noopener">google scholar ↗</a>
+          <a href="https://orcid.org/0000-0001-8613-0647" class="btn" target="_blank" rel="noopener">orcid</a>
+          <a href="https://www.researchgate.net/profile/Chakit_Arora" class="btn" target="_blank" rel="noopener">researchgate</a>
+          <a href="https://www.linkedin.com/in/chakitarora/" class="btn" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://github.com/chakitarora" class="btn" target="_blank" rel="noopener">github</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="Chakit.jpg" alt="Chakit Arora" onerror="this.style.display='none';this.parentElement.innerHTML='<em>CA</em>'">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="wrap">
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-number live" id="metPapers">—</div>
+        <div class="metric-label">publications</div>
+        <div class="metric-sub"><span class="live-dot"></span>live</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number live" id="metCitations">—</div>
+        <div class="metric-label">citations</div>
+        <div class="metric-sub"><span class="live-dot"></span>live</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number live" id="metHindex">—</div>
+        <div class="metric-label">h-index</div>
+        <div class="metric-sub"><span class="live-dot"></span>live</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number live" id="metI10">—</div>
+        <div class="metric-label">i10-index</div>
+        <div class="metric-sub"><span class="live-dot"></span>live</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">5</div>
+        <div class="metric-label">webservers</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">10+</div>
+        <div class="metric-label">years exp.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="section-label">about</p>
+    <div class="about-body">
+      <p>I am a computational biologist with <strong>10+ years of experience</strong> spanning cancer systems biology, GPCR signalling networks, machine learning, and bioinformatics software development. I am currently a Post-Doctoral Research Fellow at the <a href="https://bioinfolab.sns.it" target="_blank"><strong>Bioinformatics Group (BIO@SNS)</strong></a>, <a href="https://www.sns.it" target="_blank"><strong>Scuola Normale Superiore</strong></a>, Pisa, under PI <strong>Dr. Francesco Raimondi</strong>.</p>
+      <p>My postdoctoral research focuses on decoding the oncogenic rewiring of GPCR signalling across pan-cancer transcriptomics — constructing ligand–receptor–enzyme interaction networks from TCGA data, identifying survival-associated axes, and translating these into actionable drug repurposing hypotheses. I am a co-developer of <strong>EXPANSION</strong>, a webserver for genome-scale functional interpretation of alternative splicing in cancer, and contributed to the <strong>GPCR Cancer Axes</strong> interactive explorer.</p>
+      <p>My doctoral research at <a href="https://webs.iiitd.edu.in/raghava/" target="_blank"><strong>Prof. G.P.S. Raghava's Lab</strong></a>, <a href="https://www.iiitd.ac.in" target="_blank"><strong>IIIT-Delhi</strong></a>, focused on pan-cancer survival stratification using apoptosis pathway gene expression, producing multiple deployed webservers and six first/co-first author publications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap">
+    <p class="section-label">publications</p>
+    <div id="apiBanner" class="api-banner"></div>
+    <div class="pub-filters">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="first">★ first author</button>
+      <button class="filter-btn" data-filter="contributing">contributing</button>
+      <button class="filter-btn" data-filter="preprint">preprints</button>
+      <span class="pub-status" id="pubStatus"></span>
+    </div>
+    <div class="pub-list" id="pubList" role="list">
+      <div class="pub-loading"><span class="live-dot"></span>loading from OpenAlex…</div>
+    </div>
+    <p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--phosphor3);margin-top:0.7rem;text-align:right">
+      <span class="live-dot"></span>auto-updated via
+      <a href="https://openalex.org" target="_blank" rel="noopener">openalex.org</a> ·
+      orcid <a href="https://orcid.org/0000-0001-8613-0647" target="_blank" rel="noopener">0000-0001-8613-0647</a>
+    </p>
+  </div>
+</section>
+
+<!-- SOFTWARE -->
+<section id="software">
+  <div class="wrap">
+    <p class="section-label">research software</p>
+    <div class="sw-grid">
+      <div class="sw-card">
+        <div class="sw-name">EXPANSION</div>
+        <span class="sw-badge">Bioinformatics Advances 2023 · Methods Mol Biol 2026</span>
+        <p class="sw-desc">Webserver for genome-scale functional annotation of alternative splicing in cancer. Integrates differential transcripts, domain architecture, PTMs, isoform-specific PPIs, and ORA. Co-developer.</p>
+        <a href="https://expansion.bioinfolab.sns.it" target="_blank" rel="noopener" class="sw-link">expansion.bioinfolab.sns.it</a>
+      </div>
+      <div class="sw-card">
+        <div class="sw-name">GPCR Cancer Axes</div>
+        <span class="sw-badge">Cell Genomics 2024</span>
+        <p class="sw-desc">Interactive webapp for pan-cancer GPCR signalling axis exploration: co-regulated receptor–ligand pairs, patient survival statistics, TF enrichment, and drug repurposing candidates across TCGA.</p>
+        <a href="https://gpcrcanceraxes.bioinfolab.sns.it" target="_blank" rel="noopener" class="sw-link">gpcrcanceraxes.bioinfolab.sns.it</a>
+      </div>
+      <div class="sw-card">
+        <div class="sw-name">CMcrpred</div>
+        <span class="sw-badge">Heliyon 2020</span>
+        <p class="sw-desc">Risk prediction for cutaneous melanoma from clinico-pathological features. Outperforms AJCC staging and GEP-based methods (HR=6.40). Also available as Android app.</p>
+        <a href="https://webs.iiitd.edu.in/raghava/cmcrpred/" target="_blank" rel="noopener" class="sw-link">webs.iiitd.edu.in/raghava/cmcrpred</a>
+      </div>
+      <div class="sw-card">
+        <div class="sw-name">CRCRpred</div>
+        <span class="sw-badge">PLoS ONE 2019</span>
+        <p class="sw-desc">Colorectal cancer risk scoring from mitochondrial apoptotic pathway protein concentrations. LassoLars model: HR=6.34, accuracy 71.6% on Stage III CRC.</p>
+        <a href="https://webs.iiitd.edu.in/raghava/crcrpred/" target="_blank" rel="noopener" class="sw-link">webs.iiitd.edu.in/raghava/crcrpred</a>
+      </div>
+      <div class="sw-card">
+        <div class="sw-name">PRRpred</div>
+        <span class="sw-badge">Frontiers in Immunology 2020</span>
+        <p class="sw-desc">Hybrid BLAST + PSSM ML classifier for pattern recognition receptors. Validated MCC=0.82, AUROC=0.95 on independent test set. Co-first author.</p>
+        <a href="https://webs.iiitd.edu.in/raghava/prrpred/" target="_blank" rel="noopener" class="sw-link">webs.iiitd.edu.in/raghava/prrpred</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="wrap">
+    <p class="section-label">experience & education</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2021 –<br>present</div>
+        <div>
+          <p class="tl-title">Post-Doctoral Research Fellow</p>
+          <p class="tl-org"><a href="https://bioinfolab.sns.it" target="_blank">BIO@SNS, Scuola Normale Superiore</a> · Pisa, Italy</p>
+          <p class="tl-desc">PI: Dr. Francesco Raimondi. Pan-cancer GPCR signalling, alternative splicing functional annotation (EXPANSION), ML-guided drug response prediction.</p>
+          <div class="tl-tags"><span class="tl-tag">Cell Genomics 2024</span><span class="tl-tag">Nature Comms 2025</span><span class="tl-tag">EXPANSION</span><span class="tl-tag">GPCR Cancer Axes</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021</div>
+        <div>
+          <p class="tl-title">Bioinformatician</p>
+          <p class="tl-org">Biotix Pte Ltd · Singapore</p>
+          <p class="tl-desc">NGS + microbiome (16S rRNA) data integration for therapeutic pipeline decision-making.</p>
+          <div class="tl-tags"><span class="tl-tag">NGS</span><span class="tl-tag">Microbiome</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2015 –<br>2021</div>
+        <div>
+          <p class="tl-title">PhD in Computational Biology</p>
+          <p class="tl-org"><a href="https://webs.iiitd.edu.in/raghava/" target="_blank">Prof. G.P.S. Raghava's Lab</a>, <a href="https://www.iiitd.ac.in" target="_blank">IIIT-Delhi</a> · India</p>
+          <p class="tl-desc">Pan-cancer survival ML models for apoptosis pathway genes across 33 TCGA cancer types. 3 deployed webservers, 6 first/co-first author publications. Graduate Teaching Assistant for 8 courses (2015–2020).</p>
+          <div class="tl-tags"><span class="tl-tag">TCGA</span><span class="tl-tag">Survival Analysis</span><span class="tl-tag">Machine Learning</span><span class="tl-tag">Webservers</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2014 –<br>2015</div>
+        <div>
+          <p class="tl-title">Junior Research Fellow</p>
+          <p class="tl-org">DDRC, THSTI · India</p>
+          <p class="tl-desc">ODE-based mathematical modelling of insulin resistance. Mentor: Dr. Samrat Chatterjee.</p>
+          <div class="tl-tags"><span class="tl-tag">Mathematical Modelling</span><span class="tl-tag">ODE</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2010 –<br>2012</div>
+        <div>
+          <p class="tl-title">MSc in Physics</p>
+          <p class="tl-org">University of Delhi · India</p>
+          <p class="tl-desc">Complex systems, non-linear dynamics, numerical methods. All India Rank 5, UoD MSc Physics Entrance (2010).</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2007 –<br>2010</div>
+        <div>
+          <p class="tl-title">BSc (Honours) Electronics</p>
+          <p class="tl-org">University of Delhi · India</p>
+          <p class="tl-desc">Electronics, Physics, Mathematical Physics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PHILOSOPHY -->
+<section id="philosophy" class="philosophy">
+  <div class="wrap">
+    <p class="section-label">design notes</p>
+
+    <p class="phil-intro">
+      There's a verse in the Bhagavad Gita that I keep coming back to.
+      Krishna tells Arjuna: <em>let right deeds be thy motive, not the fruit which comes from them.</em>
+      It sounds simple. It isn't. What he's describing is a particular kind of human being —
+      someone who does the work because the work matters, not because of what it might return.
+      A seeker. Not of reward. Of understanding.
+      That's what this page is really about.
+    </p>
+
+    <div class="phil-grid">
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 01 · the void</p>
+        <p class="phil-heading">Why the darkness?</p>
+        <p class="phil-body">
+          Ninety-six percent of the universe is dark matter and dark energy.
+          Everything we've ever seen, measured, or touched — every star, every galaxy,
+          every atom — is the remaining four percent. A thin luminous film
+          on an ocean of something we genuinely don't understand yet.<br><br>
+          I find that staggering. Not frightening — staggering.
+          The Vedantic tradition has a word for the ground of unmanifest reality: <em>Tamas</em>.
+          Darkness not as absence, but as potential. The silence before the note.<br><br>
+          The background is dark because honesty demands it.
+          The things that glow here — the teal, the gold, the text — earn their light
+          against that ground. Nothing is illuminated by default.
+          You have to look.
+        </p>
+      </div>
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 02 · indra's net</p>
+        <p class="phil-heading">The lattice you're reading through</p>
+        <p class="phil-body">
+          The barely-visible network behind everything is called Indra's Net.
+          It comes from the Atharva Veda — an infinite lattice where a jewel hangs
+          at every vertex, and each jewel reflects every other one,
+          which itself reflects every other one, forever.<br><br>
+          The first time I read about it properly I thought: this is exactly what
+          a protein interaction network looks like. Every node modulating every other
+          through phosphorylation, conformational change, allosteric coupling.
+          The GPCR signalling axes in my research work the same way —
+          perturb one receptor and ten pathways shift, and a thousand genes downstream.<br><br>
+          It also turns out to look a lot like the holographic principle in theoretical physics,
+          which says the information content of a volume of space might be encoded
+          entirely on its boundary surface.
+          Ancient metaphor and modern physics, same structure.
+          I don't know what to do with that. I just think it's worth noticing.
+        </p>
+      </div>
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 03 · the living teal</p>
+        <p class="phil-heading">The colour of emergence</p>
+        <p class="phil-body">
+          The teal — <em>#00C9A7</em> — comes from two places.<br><br>
+          The first is GFP. The Green Fluorescent Protein from
+          <em>Aequorea victoria</em> jellyfish, which in 1994 became the tool that let
+          biologists tag living proteins with light and watch them move through cells
+          in real time. Possibly the most transformative tool in modern biology.
+          The colour of life made legible.<br><br>
+          The second is Cherenkov radiation — the blue-green glow in nuclear reactors
+          when a charged particle moves through water faster than light can in that medium.
+          It's the optical signature of physics operating right at its limit.<br><br>
+          Teal sits between blue and green. Between physics and biology.
+          Between the vast and the living. That seems like the right colour
+          for a computational biologist to work in.
+        </p>
+      </div>
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 04 · the gold</p>
+        <p class="phil-heading">First light</p>
+        <p class="phil-body">
+          In the Rigveda there's a hymn called the Nasadiya Sukta — the Hymn of Creation.
+          It asks what existed before existence:
+          <em>"Neither being nor non-being was there, neither air nor sky beyond.
+          What covered it? Where was it? What sheltered it? Was there water, bottomlessly deep?"</em><br><br>
+          The poets don't answer. They end the hymn with a question:
+          perhaps even the gods don't know. That admission of uncertainty,
+          in a sacred text, thousands of years old, is one of the most honest things
+          I've encountered in any tradition.<br><br>
+          Gold here is <em>Hiranyagarbha</em> — the Golden Womb, the first coherence.
+          It marks things that originated here: first-author work, primary ideas.
+          The blinking cursor in the navigation is gold because what you see
+          is still being written. The seeker hasn't arrived anywhere.
+          They're still going.
+        </p>
+      </div>
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 05 · the typefaces</p>
+        <p class="phil-heading">Three ways of knowing</p>
+        <p class="phil-body">
+          <em>Cormorant Garamond</em> — for names and titles — is a serif
+          in the tradition of Claude Garamond's sixteenth-century type.
+          It carries weight. History. The sense that knowledge accumulates,
+          gets passed between minds across centuries.<br><br>
+          <em>Inter</em> for body text. No associations. Just legibility.
+          The present tense.<br><br>
+          <em>JetBrains Mono</em> for everything that is data — DOIs,
+          navigation, metrics, tags. Monospace because measurement
+          is not interpretation. A number is a number.
+          A DOI is a coordinate.<br><br>
+          The name in the navigation bar is rendered in monospace
+          — as though it were a variable in a programme.
+          I didn't plan that as a statement. It just felt right.
+          Maybe it's because the work and the person doing the work
+          are harder to separate than CVs make it seem.
+        </p>
+      </div>
+
+      <div class="phil-block">
+        <p class="phil-glyph">// 06 · the sci-fi register</p>
+        <p class="phil-heading">Telemetry from somewhere far away</p>
+        <p class="phil-body">
+          The blinking cursor. The <em>// comment syntax</em>. The metrics panel
+          that reads like an instrument readout. These come from a specific
+          flavour of science fiction that I love — not the shiny optimistic kind,
+          but the kind that takes the universe seriously.<br><br>
+          Peter Watts' <em>Blindsight</em>. The Strugatsky brothers'
+          <em>Roadside Picnic</em>, where scientists log alien artefacts
+          with the same bureaucratic precision a biologist uses to annotate a genome.
+          Lem's <em>Solaris</em>, where a planet-sized ocean responds to human presence
+          and nobody can agree on what it means.<br><br>
+          What these books share is a refusal to make the universe legible on human terms.
+          The universe doesn't owe us comprehension.
+          We build instruments to receive signals it never intended for us.
+          That's also what computational biology does — we listen
+          for structure in data that has no interest in being understood.
+          The aesthetic follows from that.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="phil-divider"></div>
+
+    <p class="phil-coda">
+      There's a teaching in the Chandogya Upanishad where Uddalaka asks his son Shvetaketu
+      to dissolve salt in water, then taste it at different points — top, middle, bottom.
+      It's everywhere. Invisible. Indistinguishable from the water itself.
+      <em>"That which is the subtle essence — in it all that exists has its self.
+      It is the True. It is the Self."</em>
+      Then: <strong>Tat tvam asi. That thou art.</strong><br><br>
+      Cancer is what happens when a cell stops knowing this. When a signal pathway
+      stops listening to the whole and begins optimising only for itself —
+      proliferating, evading, treating the body it lives in as resource rather than home.
+      At the most basic level, the work on this page is trying to understand
+      how that forgetting happens. Not because I expect the Upanishads to help with
+      the mechanism — they won't — but because the question turns out to be the same question.
+      How do the parts lose the memory of the whole?<br><br>
+      I'm still looking. That's the point.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <p class="section-label">contact</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">mail://</div>
+        <div>
+          <p class="contact-label">email</p>
+          <p class="contact-value"><a href="mailto:chakit.arora@sns.it">chakit.arora@sns.it</a></p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">loc://</div>
+        <div>
+          <p class="contact-label">address</p>
+          <p class="contact-value">Ufficio T05, Via Roma 3<br>Pisa 56126, Italy</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">ref://</div>
+        <div>
+          <p class="contact-label">academic profiles</p>
+          <p class="contact-value">
+            <a href="https://orcid.org/0000-0001-8613-0647" target="_blank">ORCID</a> ·
+            <a href="https://www.researchgate.net/profile/Chakit_Arora" target="_blank">ResearchGate</a> ·
+            <a href="https://bioinfolab.sns.it" target="_blank">BIO@SNS</a>
+          </p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">src://</div>
+        <div>
+          <p class="contact-label">code & network</p>
+          <p class="contact-value">
+            <a href="https://github.com/chakitarora" target="_blank">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/chakitarora/" target="_blank">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-text">
+      chakit arora, phd ·
+      <a href="https://bioinfolab.sns.it" target="_blank">bio@sns</a> ·
+      <a href="https://www.sns.it" target="_blank">scuola normale superiore</a> · pisa, italy
+    </p>
+    <p class="footer-coords">
+      <span class="live-dot"></span>publications &amp; metrics · auto-updated via
+      <a href="https://openalex.org" target="_blank">openalex</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// INDRA'S NET — animated network background
+// A sparse, slowly-breathing lattice of nodes and edges.
+// Simultaneously: protein interaction graph, spacetime lattice,
+// the jewelled net of the Avatamsaka Sutra.
+// ══════════════════════════════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('indra-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, nodes, t = 0;
+  const NODE_COUNT = 55;
+  const MAX_DIST   = 180;
+  const TEAL  = '0,201,167';
+  const GOLD  = '232,160,32';
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    init();
+  }
+
+  function init() {
+    nodes = Array.from({length: NODE_COUNT}, (_, i) => ({
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      r:  1 + Math.random() * 1.4,
+      phase: Math.random() * Math.PI * 2,
+      gold: Math.random() < 0.12,  // ~12% gold nodes — rare, like first principles
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.008;
+
+    // Move nodes
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < -50)  n.x = W + 50;
+      if (n.x > W+50) n.x = -50;
+      if (n.y < -50)  n.y = H + 50;
+      if (n.y > H+50) n.y = -50;
+    });
+
+    // Draw edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < MAX_DIST) {
+          const alpha = (1 - d/MAX_DIST) * 0.22;
+          const col   = (nodes[i].gold && nodes[j].gold) ? GOLD : TEAL;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${col},${alpha})`;
+          ctx.lineWidth   = 0.4;
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach((n, i) => {
+      const pulse = 0.5 + 0.5 * Math.sin(t + n.phase);
+      const alpha = 0.3 + pulse * 0.45;
+      const col   = n.gold ? GOLD : TEAL;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${col},${alpha})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// PUBLICATION SYSTEM — OpenAlex live fetch with static fallback
+// ══════════════════════════════════════════════════════════════════
+const ORCID_URI = "https://orcid.org/0000-0001-8613-0647";
+const MAILTO    = "chakit.arora@sns.it";
+
+const FA_DOIS = new Set([
+  "10.1007/978-1-0716-4828-5_18",
+  "10.1016/j.xgen.2024.100557",
+  "10.1093/bioadv/vbad135",
+  "10.1002/pmic.202000311",
+  "10.1371/journal.pone.0259534",
+  "10.1016/j.heliyon.2020.e04811",
+  "10.3389/fimmu.2020.00071",
+  "10.1371/journal.pone.0217527",
+]);
+
+const IF_MAP = {
+  "10.1016/j.xgen.2024.100557":   11.1,
+  "10.1038/s41467-025-56827-5":   16.6,
+  "10.1093/bib/bbaa294":           9.5,
+  "10.3389/fimmu.2020.00071":      7.3,
+  "10.3389/fimmu.2021.780610":     7.3,
+  "10.1016/j.heliyon.2020.e04811": 4.0,
+  "10.1371/journal.pone.0259534":  3.7,
+  "10.1371/journal.pone.0217527":  3.7,
+  "10.3389/fgene.2020.00221":      3.7,
+  "10.1007/s40291-021-00539-1":    3.9,
+  "10.1002/pmic.202000311":        3.4,
+  "10.1007/s00432-020-03318-3":    3.4,
+  "10.1089/cmb.2022.0241":         1.7,
+};
+
+const STATIC_PUBS = [
+  {doi:"10.1007/978-1-0716-4828-5_18",year:2026,fa:true,type:"pub",title:"Exploring the Functional Consequences of Protein-Coding Alternative Splice Variants at a Genome Scale: A Guide to Utilizing EXPANSION",authors:"Arora C, De Oliveira Rosa N, Matic M, Cascone M, Miglionico P & Raimondi F.",journal:"Methods in Molecular Biology",vol:"2979:301–314",citations:null},
+  {doi:"10.1016/j.xgen.2024.100557",year:2024,fa:true,type:"pub",title:"The landscape of cancer-rewired GPCR signaling axes",authors:"Arora C, Matic M, Bisceglia L, Di Chiaro P, De Oliveira Rosa N, Carli F, … Gutkind JS & Raimondi F.",journal:"Cell Genomics",vol:"4(5):100557",citations:null},
+  {doi:"10.1093/bioadv/vbad135",year:2023,fa:true,type:"pub",title:"EXPANSION: a webserver to explore the functional consequences of protein-coding alternative splice variants in cancer genomics",authors:"Arora C, De Oliveira Rosa N, Matic M, Cascone M, Miglionico P & Raimondi F.",journal:"Bioinformatics Advances",vol:"3(1):vbad135",citations:null},
+  {doi:"10.1002/pmic.202000311",year:2022,fa:true,type:"pub",title:"Universal and cross-cancer prognostic biomarkers for predicting survival risk of cancer patients from expression profile of apoptotic pathway genes",authors:"Arora C, Kaur D & Raghava GPS.",journal:"Proteomics",vol:"22(3):e2000311",citations:null},
+  {doi:"10.1371/journal.pone.0259534",year:2021,fa:true,type:"pub",title:"Prognostic biomarkers for predicting papillary thyroid carcinoma patients at high risk using nine genes of apoptotic pathway",authors:"Arora C, Kaur D, Naorem LD & Raghava GPS.",journal:"PLoS ONE",vol:"16(11):e0259534",citations:null},
+  {doi:"10.1016/j.heliyon.2020.e04811",year:2020,fa:true,type:"pub",title:"Risk prediction in cutaneous melanoma patients from their clinico-pathological features: superiority of clinical data over gene expression data",authors:"Arora C, Kaur D, Lathwal A & Raghava GPS.",journal:"Heliyon",vol:"6(8):e04811",citations:null},
+  {doi:"10.3389/fimmu.2020.00071",year:2020,fa:true,type:"pub",title:"A hybrid model for predicting pattern recognition receptors using evolutionary information",authors:"Kaur D* & Arora C* [co-first]",journal:"Frontiers in Immunology",vol:"11:71",citations:null},
+  {doi:"10.1371/journal.pone.0217527",year:2019,fa:true,type:"pub",title:"Prediction of risk scores for colorectal cancer patients from the concentration of proteins involved in mitochondrial apoptotic pathway",authors:"Lathwal A, Arora C & Raghava GPS.",journal:"PLoS ONE",vol:"14(9):e0217527",citations:null},
+  {doi:"10.1038/s41467-025-56827-5",year:2025,fa:false,type:"pub",title:"Learning and actioning general principles of cancer cell drug sensitivity",authors:"Carli F, Di Chiaro P, Morelli M, Arora C, … Raimondi F.",journal:"Nature Communications",vol:"16(1):1654",citations:null},
+  {doi:"10.1089/cmb.2022.0241",year:2023,fa:false,type:"pub",title:"Pfeature: A Tool for Computing Wide Range of Protein Features and Building Prediction Models",authors:"Pande A, Patiyal S, Lathwal A, Arora C, … Raghava GPS.",journal:"Journal of Computational Biology",vol:"30(2):204–222",citations:null},
+  {doi:"10.1007/s40291-021-00539-1",year:2021,fa:false,type:"pub",title:"Prognostic Biomarker-Based Identification of Drugs for Managing the Treatment of Endometrial Cancer",authors:"Kaur D, Arora C & Raghava GPS.",journal:"Molecular Diagnosis & Therapy",vol:"25(5):629–646",citations:null},
+  {doi:"10.3389/fimmu.2021.780610",year:2021,fa:false,type:"pub",title:"Tool for Predicting, Scanning, and Designing Defensins",authors:"Kaur D, Patiyal S, Arora C, Singh R, Lodhi G & Raghava GPS.",journal:"Frontiers in Immunology",vol:"12:780610",citations:null},
+  {doi:"10.1093/bib/bbaa294",year:2021,fa:false,type:"pub",title:"AlgPred 2.0: an improved method for predicting allergenic proteins and mapping of IgE epitopes",authors:"Sharma N, Patiyal S, Dhall A, Pande A, Arora C & Raghava GPS.",journal:"Briefings in Bioinformatics",vol:"22(4):bbaa294",citations:null},
+  {doi:"10.1007/s00432-020-03318-3",year:2020,fa:false,type:"pub",title:"Identification of prognostic biomarkers for major subtypes of non-small-cell lung cancer using genomic and clinical data",authors:"Lathwal A, Kumar R, Arora C & Raghava GPS.",journal:"Journal of Cancer Research and Clinical Oncology",vol:"146(11):2743–2752",citations:null},
+  {doi:"10.3389/fgene.2020.00221",year:2020,fa:false,type:"pub",title:"Computing Skin Cutaneous Melanoma Outcome From the HLA-Alleles and Clinical Characteristics",authors:"Dhall A, Patiyal S, Kaur H, Bhalla S, Arora C & Raghava GPS.",journal:"Frontiers in Genetics",vol:"11:221",citations:null},
+  {doi:"10.1089/mab.2020.0035",year:2020,fa:false,type:"pub",title:"A Web-Based Platform on Coronavirus Disease-19 to Maintain Predicted Diagnostic, Drug, and Vaccine Candidates",authors:"Patiyal S, Kaur D, Kaur H, Sharma N, Dhall A, Sahai S, Agrawal P, Maryam L, Arora C & Raghava GPS.",journal:"Monoclonal Antibodies in Immunodiagnosis and Immunotherapy",vol:"39(6):204–216",citations:null},
+  {doi:"10.1101/2026.03.07.710286",year:2026,fa:false,type:"preprint",title:"Computed atlas of the human GPCR–G protein signaling complexes",authors:"Miglionico P, Matic M, Carli F, Arai H, Nemati Fard LA, Arora C, … & Raimondi F.",journal:"bioRxiv",vol:"",citations:null},
+  {doi:"10.1101/2025.08.15.670478",year:2025,fa:false,type:"preprint",title:"Communication Breakdown and Evolution of the Cancer Cell",authors:"Nemati Fard LA, Arora C, Miglionico P, Vukotic R, Bisceglia L, … & Raimondi F.",journal:"bioRxiv",vol:"",citations:null},
+  {doi:"10.1101/269738",year:2018,fa:false,type:"preprint",title:"Controlling insulin resistance by modulation of mediators of cellular senescence: A mathematical study",authors:"Chatterjee S, Lathwal A, Arora C & Raghava GPS.",journal:"bioRxiv",vol:"",citations:null},
+];
+
+const normDoi = d => d ? d.replace(/^https?:\/\/doi\.org\//i,"").toLowerCase().trim() : null;
+
+function formatAuthors(authorships) {
+  if (!authorships?.length) return "";
+  const names = authorships.map(a => {
+    const raw = a.author?.display_name || "";
+    const parts = raw.trim().split(/\s+/);
+    const last = parts.pop();
+    const inits = parts.map(p => p[0]+".").join(" ");
+    return inits ? last+" "+inits : last;
+  });
+  if (names.length <= 6) return names.join(", ")+".";
+  return names.slice(0,5).join(", ")+" … & "+names[names.length-1]+".";
+}
+
+function getType(w) {
+  const t = (w.type||"").toLowerCase();
+  const x = (w.type_crossref||"").toLowerCase();
+  if (t.includes("preprint")||x.includes("posted-content")) return "preprint";
+  return "pub";
+}
+
+function renderPub(p, idx) {
+  const IF_ = IF_MAP[p.doi]||null;
+  const ifB  = IF_ ? `<span class="badge badge-if">IF ${IF_}</span>` : "";
+  const faB  = p.fa&&p.type!=="preprint" ? `<span class="badge badge-fa">★ first</span>` : "";
+  const preB = p.type==="preprint" ? `<span class="badge badge-pre">preprint</span>` : "";
+  const num  = p.fa&&p.type!=="preprint" ? "★" : String(idx+1);
+  const nCls = p.fa&&p.type!=="preprint" ? "pub-num star" : "pub-num";
+  const cit  = p.citations!=null
+    ? `<strong>${p.citations}</strong><span>cited by</span>`
+    : `<strong style="color:var(--phosphor3)">—</strong>`;
+  const vol  = p.vol ? `<span style="color:var(--phosphor3)">${p.vol}</span>` : "";
+  return `
+  <div class="pub-item" role="listitem">
+    <span class="${nCls}">${num}</span>
+    <div>
+      <p class="pub-title"><a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a></p>
+      <div class="pub-meta">
+        <span>${p.authors}</span>
+        <span class="pub-journal">${p.journal}</span>
+        ${vol}<span style="color:var(--phosphor3)">${p.year}</span>
+        ${ifB}${faB}${preB}
+      </div>
+    </div>
+    <div class="pub-cite">${cit}</div>
+  </div>`;
+}
+
+let allPubs = [...STATIC_PUBS];
+let currentFilter = "all";
+
+function renderList(filter) {
+  currentFilter = filter;
+  const f =
+    filter==="all"          ? allPubs.filter(p=>p.type!=="preprint") :
+    filter==="first"        ? allPubs.filter(p=>p.fa&&p.type!=="preprint") :
+    filter==="contributing" ? allPubs.filter(p=>!p.fa&&p.type!=="preprint") :
+    allPubs.filter(p=>p.type==="preprint");
+  document.getElementById("pubList").innerHTML =
+    f.length ? f.map((p,i)=>renderPub(p,i)).join("") :
+    '<div class="pub-loading">no publications in this category.</div>';
+}
+
+function updateLabels() {
+  const pubs  = allPubs.filter(p=>p.type!=="preprint");
+  const fa    = pubs.filter(p=>p.fa);
+  const con   = pubs.filter(p=>!p.fa);
+  const pre   = allPubs.filter(p=>p.type==="preprint");
+  document.querySelectorAll(".filter-btn").forEach(b => {
+    const map = {all:`all (${pubs.length})`,"first":`★ first author (${fa.length})`,contributing:`contributing (${con.length})`,preprint:`preprints (${pre.length})`};
+    b.textContent = map[b.dataset.filter] || b.textContent;
+  });
+}
+
+// Sort by year descending (fa tag already shown per item, no need to group by fa)
+allPubs.sort((a,b) => b.year - a.year);
+
+// Show static data immediately
+document.getElementById("metPapers").textContent = STATIC_PUBS.filter(p=>p.type!=="preprint").length;
+updateLabels();
+renderList("all");
+
+// Filter buttons
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderList(btn.dataset.filter);
+  });
+});
+
+// ── Live OpenAlex fetch ─────────────────────────────────────────
+// BUG HISTORY:
+// v1: filter=orcid:0000-0001-8613-0647            → wrong, bare ID not accepted
+// v2: filter=orcid:${encodeURIComponent(ORCID_URI)} → wrong, encodes slashes → 403
+// v3 (this): filter string built without encoding the value; only cursor token encoded
+async function loadFromOpenAlex() {
+  const statusEl = document.getElementById("pubStatus");
+  try {
+    statusEl.textContent = "syncing…";
+
+    // Step 1: Author lookup
+    // CORRECT: the filter value must NOT be URI-encoded — OpenAlex needs literal slashes
+    const authorUrl =
+      "https://api.openalex.org/authors" +
+      "?filter=orcid:" + ORCID_URI +        // literal URI, no encodeURIComponent
+      "&mailto=" + MAILTO;
+
+    const r1 = await fetch(authorUrl);
+    if (!r1.ok) throw new Error("author lookup HTTP " + r1.status);
+    const d1 = await r1.json();
+    if (!d1.results?.length) throw new Error("ORCID not found in OpenAlex");
+
+    const author = d1.results[0];
+    const oaId   = author.id.replace("https://openalex.org/", "");
+    const stats  = author.summary_stats || {};
+    document.getElementById("metCitations").textContent =
+      (author.cited_by_count || 0).toLocaleString();
+    document.getElementById("metHindex").textContent = stats.h_index   ?? "—";
+    document.getElementById("metI10").textContent    = stats.i10_index ?? "—";
+
+    // Step 2: Fetch works with cursor pagination
+    // cursor token IS opaque and may contain special chars — encode it
+    let works = [], cursor = "*", page = 0;
+    while (cursor && page < 10) {
+      page++;
+      const worksUrl =
+        "https://api.openalex.org/works" +
+        "?filter=author.id:" + oaId +
+        "&per-page=50" +
+        "&cursor=" + encodeURIComponent(cursor) +
+        "&select=doi,title,authorships,primary_location,publication_year,cited_by_count,type,type_crossref,biblio" +
+        "&mailto=" + MAILTO;
+
+      const r2 = await fetch(worksUrl);
+      if (!r2.ok) break;
+      const d2 = await r2.json();
+      const batch = d2.results || [];
+      works = works.concat(batch);
+
+      // Advance cursor only when we have a new, different cursor AND more records expected
+      const next = d2.meta?.next_cursor;
+      cursor = (next && next !== cursor && works.length < (d2.meta?.count || 0))
+        ? next : null;
+    }
+
+    if (!works.length) throw new Error("no works returned");
+
+    // Step 3: Parse works
+    const live = works.map(w => {
+      const doi     = normDoi(w.doi);
+      const journal = w.primary_location?.source?.display_name || "—";
+      const b       = w.biblio || {};
+      const vol     = [
+        b.volume,
+        b.issue   ? "(" + b.issue + ")"   : "",
+        b.first_page ? ":" + b.first_page : ""
+      ].filter(Boolean).join("");
+      const myAuth  = (w.authorships || []).find(a =>
+        a.author?.orcid?.includes("0000-0001-8613-0647"));
+      const isFa    = (doi && FA_DOIS.has(doi)) ||
+                      myAuth?.author_position === "first";
+      return {
+        doi, title: w.title || "Untitled",
+        authors: formatAuthors(w.authorships),
+        journal, vol,
+        year:      w.publication_year || 0,
+        citations: w.cited_by_count ?? null,
+        fa: !!isFa, type: getType(w)
+      };
+    });
+
+    // Sort by year desc
+    live.sort((a, b) => b.year - a.year);
+
+    // Keep manual preprints not returned by OpenAlex filter
+    const liveSet = new Set(live.map(p => p.doi));
+    const manPre  = STATIC_PUBS.filter(p => p.type === "preprint" && !liveSet.has(p.doi));
+    allPubs = [...live, ...manPre];
+
+    document.getElementById("metPapers").textContent =
+      live.filter(p => p.type !== "preprint").length;
+    updateLabels();
+    renderList(currentFilter);
+
+    const d = new Date().toLocaleDateString("en-GB",
+      {day:"numeric", month:"short", year:"numeric"});
+    statusEl.textContent = "synced · " + d;
+
+  } catch(err) {
+    console.warn("OpenAlex fetch failed:", err.message);
+    statusEl.textContent = "cached";
+    const banner = document.getElementById("apiBanner");
+    banner.style.display = "block";
+    banner.innerHTML =
+      "live sync unavailable · " +
+      "<a href=\"https://scholar.google.com/citations?user=IUeqxQsAAAAJ\" target=\"_blank\">" +
+      "view all on google scholar →</a>";
+  }
+}
+
+requestAnimationFrame(() => setTimeout(loadFromOpenAlex, 200));
+</script>
+</body>
+</html>
