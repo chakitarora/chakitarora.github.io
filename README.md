@@ -1,6 +1,6 @@
 # chakitarora.github.io
 
-Personal academic webpage of **Chakit Arora, PhD** — Post-Doctoral Research Fellow in Computational Biology at [Scuola Normale Superiore](https://www.sns.it), Pisa, Italy.
+Personal academic webpage. 
 
 → **[chakitarora.github.io](https://chakitarora.github.io)**
 
